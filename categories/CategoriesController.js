@@ -16,7 +16,15 @@ router.post("/categories/save", (req, res) => {
     title: title,
     slug: slugify(title),
   })
-    .then(() => res.redirect("/"))
+    .then(() => res.redirect("/admin/categories/index"))
+    .catch((err) => console.log(err));
+});
+
+router.get("/admin/categories", (req, res) => {
+  Category.findAll()
+    .then((categories) => {
+      res.render("admin/categories/index", { categories });
+    })
     .catch((err) => console.log(err));
 });
 
