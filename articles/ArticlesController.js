@@ -1,12 +1,15 @@
 const express = require("express");
 const router = express.Router();
+const Article = require("./Article");
 
-router.get("/articles", (req, res) => {
-  res.send("Articles route");
+router.get("/admin/articles", (req, res) => {
+  res.render("admin/articles/index");
 });
 
 router.get("/admin/articles/new", (req, res) => {
-  res.send("Create an articles as admin");
+  res.render("admin/articles/new");
 });
+
+router.post("/admin/articles", (req, res) => {});
 
 module.exports = router;
